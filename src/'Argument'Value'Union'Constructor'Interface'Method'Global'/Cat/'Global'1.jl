@@ -1,0 +1,1 @@
+const Cat_Name_Default = c__Symbol("Cat")

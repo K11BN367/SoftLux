@@ -1,0 +1,3 @@
+function intial_parameters end
+export intial_parameters
+const Lux__initial_parameters = Lux.initialparameters

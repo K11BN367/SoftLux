@@ -1,0 +1,2 @@
+function inference_forward end
+export inference_forward

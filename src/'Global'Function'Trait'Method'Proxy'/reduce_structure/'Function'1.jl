@@ -1,0 +1,2 @@
+function reduce_structure end
+export reduce_structure

@@ -1,0 +1,8 @@
+const Infer = v__Infer()
+const Skip = v__Skip()
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Chain/'Global'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Convolution/'Global'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Cat/'Global'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("MaxPool/'Global'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Nop/'Global'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Upsample/'Global'1.jl")))

@@ -1,0 +1,7 @@
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Chain_Parametric_Value/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Chain_Parametric_Value_Sparse/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Cat_Parametric_Value_Sparse/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Convolution_Parametric_Wrapper/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("MaxPool_Parametric_Wrapper/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Upsample_Parametric_Wrapper/'Method'2.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("Upsample_Parametric_Type/'Method'2.jl")))

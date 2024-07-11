@@ -1,0 +1,2 @@
+function inference end
+export inference
