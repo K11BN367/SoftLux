@@ -763,19 +763,25 @@ uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 
 [[deps.SoftBase]]
 deps = ["FileIO", "HTTP", "Pkg", "TypeUtils"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftBase"
+git-tree-sha1 = "246df51689dc7ba6a61b4ea87bf67ae639cd07df"
+repo-rev = "main"
+repo-url = "https://github.com/K11BN367/SoftBase"
 uuid = "af0a1cfc-538f-4bb2-b0da-fbf558d56e16"
 version = "0.1.0"
 
 [[deps.SoftOptimisers]]
 deps = ["Optimisers", "SoftBase"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftOptimisers"
+git-tree-sha1 = "3e04e9c9eb2ca42ace51548c6f6dbd9540613b1e"
+repo-rev = "main"
+repo-url = "https://github.com/K11BN367/SoftOptimisers"
 uuid = "768800b6-af41-427f-aca6-6c9b3ebc2520"
 version = "0.1.0"
 
 [[deps.SoftRandom]]
 deps = ["Random", "SoftBase"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftRandom"
+git-tree-sha1 = "6c33908ffd1f72b8b9dffb33e3bb1e8e2a5c558f"
+repo-rev = "main"
+repo-url = "https://github.com/K11BN367/SoftRandom"
 uuid = "b8c04a9d-53a0-48a9-ad30-96e9a8b69b86"
 version = "0.1.0"
 
