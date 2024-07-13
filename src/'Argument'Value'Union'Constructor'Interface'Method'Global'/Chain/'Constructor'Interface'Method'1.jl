@@ -10,10 +10,8 @@ function c__Chain(Value_Tuple::u__Argument...)
     Input_Tuple,        Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,       Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure,   Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
-    #println("CHAIN")
+
     Layer_Tuple, Input_Tuple, Output_Tuple = c__chain(a__Layer_Tuple(Layer_Tuple), a__Input(Input_Tuple), a__Output(Output_Tuple))
-    #println(Input_Tuple, " ", Output_Tuple)
-    #println(Layer_Tuple)
 
     if Reduce_Structure == true
         New_Layer_Tuple = ()

@@ -22,9 +22,9 @@ function c__Convolution(Value_Tuple::u__Argument...)
     Input_Tuple,                   Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,                  Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure,              Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
-    #println("CONVOLUTION")
+
     Input_Tuple, Output_Tuple = c__convolution(a__Kernel(Kernel), a__Pad(Pad), a__Dilation(Dilation), a__Stride(Stride), a__Input(Input_Tuple), a__Output(Output_Tuple))
-    #println(Input_Tuple, " ", Output_Tuple)
+
     if Reduce_Structure == true
         return v__Convolution_Parametric_Wrapper(Kernel, Activation_Function, Pad, Dilation, Group, Stride, Input_Tuple, Output_Tuple)
     else
@@ -39,7 +39,7 @@ function c__convolution(Value_Tuple::u__Argument...)
     Stride,                        Value_Tuple = unpack_arguments(a__Stride(Convolution_Stride_Default), Value_Tuple...)
     Input_Tuple,                   Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,                  Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
-    plso(Input_Tuple)
+
     if to_infer(Input_Tuple) == false
         Output_Tuple = inference_forward(u__Convolution, Input_Tuple, Output_Tuple, Kernel, Pad, Dilation, Stride)
     end
@@ -65,7 +65,6 @@ function convolution_check_forward(New_Output_Tuple, Old_Output_Tuple, Kernel_Tu
     for Index in firstindex(New_Output_Tuple):lastindex(New_Output_Tuple)
         if New_Output_Tuple[Index] != SoftLux.Infer && Old_Output_Tuple[Index] != SoftLux.Infer
             if New_Output_Tuple[Index] != Old_Output_Tuple[Index]
-                println(New_Output_Tuple, " ", Old_Output_Tuple)
                 throw(ArgumentError("Convolution Inference Error"))
             end
         end
@@ -75,7 +74,6 @@ function convolution_check_backward(New_Input_Tuple, Old_Input_Tuple, Kernel_Tup
     for Index in firstindex(New_Input_Tuple):lastindex(New_Input_Tuple)
         if New_Input_Tuple[Index] != SoftLux.Infer && Old_Input_Tuple[Index] != SoftLux.Infer
             if New_Input_Tuple[Index] != Old_Input_Tuple[Index]
-                println(New_Input_Tuple, " ", Old_Input_Tuple)
                 throw(ArgumentError("Convolution Inference Error"))
             end
         end

@@ -5,8 +5,7 @@ function c__Nop(Value_Tuple::u__Argument...)
     Input_Tuple,        Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,       Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure,   Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
-    #println("NOP")
-    #println(Input_Tuple, " ", Output_Tuple)
+
     if to_infer(Input_Tuple) == false
         Output_Tuple = inference_forward(u__Nop, Input_Tuple, Output_Tuple)
     end

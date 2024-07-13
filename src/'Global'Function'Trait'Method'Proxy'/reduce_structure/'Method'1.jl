@@ -8,9 +8,6 @@ function reduce_structure(Layer::u__Chain)
     )
 end
 function reduce_structure(Layer::u__Cat)
-    #println("#####################")
-    #println(Layer.Layer_Tuple)
-    #println(v__(Layer.Layer_Tuple))
     return c__Cat(
         a__Name(Layer.Name),
         a__Layer_Tuple(Layer.Layer_Tuple),

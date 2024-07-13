@@ -19,6 +19,7 @@ module SoftLux
     import NNlib
     import Optimisers
     import Lux
+    import LuxCUDA
     import Zygote
 
 	import InteractiveUtils.@code_warntype

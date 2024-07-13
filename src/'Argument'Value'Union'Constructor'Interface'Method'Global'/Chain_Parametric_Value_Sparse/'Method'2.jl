@@ -1,9 +1,4 @@
 @generated function apply(::v__Chain_Parametric_Value_Sparse{Layer_Tuple}, Input, Parameter, State) where {Layer_Tuple}
-    ##println("apply Chain")
-    ##println(size(Input))
-    ##println("apply Chain")
-    ##println(size(Input))
-    #return apply_chain(Layer_Tuple, Input, Parameter, State)
     fields = keys(Layer_Tuple)
     Length = length(fields)
     Input_Symbol = vcat([:Input], [gensym() for _ in 1:Length])

@@ -8,9 +8,8 @@ function c__Upsample(Value_Tuple::u__Argument...)
 	Output_Tuple, Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure, Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
     
-    #println("UPSAMPLE")
 	Input_Tuple, Output_Tuple = c__Upsample(a__Scale(Scale), a__Input(Input_Tuple), a__Output(Output_Tuple))
-	#println(Input_Tuple, " ", Output_Tuple)
+
     if Reduce_Structure == true
         return v__Upsample_Parametric_Wrapper(Mode, Output_Tuple)
     else
@@ -48,21 +47,17 @@ function t__inference_backward(::v__Type{Type}) where {Type <: u__Upsample}
 end
 #'Method'
 function upsample_bilinear(x, scale, align_corners::Bool)
-    #println("upsample_bilinear 1")
     return upsample_linear(x, scale, align_corners)
 end
 function upsample_bilinear(x::AbstractArray{<: Any, N}, scale::Real, align_corners::Bool) where N
- #println("upsample_bilinear 2")
  return upsample_linear(x, ntuple(_ -> scale, N-2), align_corners)
 end
 function upsample_linear(x::AbstractArray{T, <: Any}, size, align_corners::Bool) where T<:Integer
- #println("upsample_linear 1")
  y = float.(x)
  res = upsample_linear(y, size, align_corners)
  return round.(T, res)
 end
 function upsample_linear(x::AbstractArray{<: Any, N}, scale::NTuple{M, Real}, align_corners::Bool) where {N,M}
- #println("upsample_linear 2")
  M == N-2 || error("The scale argument should be an NTuple with length $(N-2), but it has length $M.")
  outsize = ntuple(i -> floor(Int, scale[i] * Base.size(x, i)), N-2)
  return upsample_linear(x, outsize, align_corners)
@@ -70,7 +65,6 @@ end
 
 # this actually calls the upsamling kernel
 function upsample_linear(x::AbstractArray{T,N}, size::Union{Integer, NTuple{<:Any,Integer}}, align_corners::Bool) where {T,N}
-  #println("upsample_linear 3")
   length(size) == N-2 || error("The scale argument should be an NTuple with length $(N-2), but it has length $(length(size)).")
 
   if Base.size(x)[1:N-2] == size
@@ -89,7 +83,6 @@ function ∇upsample_linear(Δ::AbstractArray{T,N}, size::NTuple{<:Any,Integer},
 end
 
 function NNlib.rrule(::v__(upsample_linear), x::AbstractArray{<:Any,N}, size, align_corners::Bool) where N
-  #println("rrule")
   Ω = upsample_linear(x, size, align_corners)
   function upsample_linear_pullback(Δ)
     (NNlib.NoTangent(), ∇upsample_linear(NNlib.unthunk(Δ), Base.size(x)[1:N-2], align_corners), NNlib.NoTangent(), NNlib.NoTangent())

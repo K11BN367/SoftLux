@@ -9,11 +9,9 @@ function c__Cat(Value_Tuple::u{a__Name, a__Layer_Tuple, a__Dimension, a__Input, 
     Input_Tuple,        Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,       Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure,   Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
-    #println("CAT")
-    #println(Input_Tuple, " ", Output_Tuple)
+
     Layer_Tuple, Input_Tuple, Output_Tuple = c__cat(a__Layer_Tuple(Layer_Tuple), a__Input(Input_Tuple), a__Output(Output_Tuple), a__Dimension(Dimension))
-    #println(Input_Tuple, " ", Output_Tuple)
-    #println(Layer_Tuple)
+
     if Reduce_Structure == true
         New_Layer_Tuple = ()
         for Layer in Layer_Tuple

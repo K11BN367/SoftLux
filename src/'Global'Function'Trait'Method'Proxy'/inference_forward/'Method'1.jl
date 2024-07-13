@@ -1,6 +1,4 @@
 function inference_forward(Layer::u__Chain, Input_Tuple)
-    #println("inference_forward Chain")
-    #println(Input_Tuple)
     Input_Tuple = merge_information(Input_Tuple, Layer.Input_Tuple)
     return c__Chain(
         a__Name(Layer.Name),
@@ -21,8 +19,6 @@ function inference_forward(Layer::u__Cat, Input_Tuple)
 end
 
 function inference_forward(Layer::u__Convolution, Input_Tuple)
-    #println("inference_forward Convolution")
-    #println(Input_Tuple)
 	Input_Tuple = merge_information(Layer.Input_Tuple, Input_Tuple)
 	return c__Convolution(
 		a__Name(Layer.Name),
@@ -95,8 +91,6 @@ function inference_forward(
     return New_Output_Tuple
 end
 function inference_forward(Layer::u__MaxPool, Input_Tuple)
-    #println("inference_forward MaxPool")
-    #println(Input_Tuple)
     Input_Tuple = merge_information(Input_Tuple, Layer.Input_Tuple)
     return c__MaxPool(
         a__Name(Layer.Name),
@@ -124,8 +118,6 @@ function inference_forward(
     return Output_Tuple
 end
 function inference_forward(Layer::u__Upsample, Input_Tuple)
-    #println("inference_forward Upsample")
-    #println(Input_Tuple)
     Input_Tuple = merge_information(Input_Tuple, Layer.Input_Tuple)
     return c__Upsample(
         a__Name(Layer.Name),

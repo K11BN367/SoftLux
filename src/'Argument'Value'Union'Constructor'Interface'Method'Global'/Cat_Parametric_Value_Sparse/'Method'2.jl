@@ -1,6 +1,4 @@
 @generated function apply(::v__Cat_Parametric_Value_Sparse{Layer_Tuple, Dimension}, Input, Parameter, State) where {Layer_Tuple, Dimension}
-    ##println("apply Cat")
-    ##println(size(Input))
     fields = keys(Layer_Tuple)
     Length = length(fields)
     Output_Symbol = [gensym() for _ in 1:(Length + 1)]

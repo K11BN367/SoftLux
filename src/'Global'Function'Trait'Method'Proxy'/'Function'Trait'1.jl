@@ -8,6 +8,10 @@ include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("inference_forward/'Functi
 include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("inference_backward/'Function'1.jl")))
 include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("setup/'Function'1.jl")))
 include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("apply/'Function'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("pullback/'Function'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("update!/'Function'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("cpu_device/'Function'1.jl")))
+include!(SoftLux, @c__URI(SoftBase.Directory, a__Path("gpu_device/'Function'1.jl")))
 #'Trait'
 struct t__inference <: t end
 struct t__inference_Chain <: t end

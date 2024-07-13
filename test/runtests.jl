@@ -83,33 +83,24 @@ function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
 
     return Chain, Parameters, State, Optimizer
 end
-function neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
+function neuralnetwork_training(Index_Stop, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
     Index = 1
     while true
-        #@time ()->begin
-            Input_Array = rand(Float32, (Input_Model_Array_Size_Tuple..., 1)) |> Device
-            Output_Array = rand(Float32, (Input_Model_Array_Size_Tuple..., 1)) |> Device
-            #println(size(Chain(Input_Array, Parameters, State)[1]))
-            Loss, Pullback = let Input_Array = Input_Array, Output_Array = Output_Array, Chain = Chain, State = State, Parameters = Parameters
-                Zygote.pullback(
-                    function (Parameters)
-                        return sum((Chain(Input_Array, Parameters, State)[1] - Output_Array) .^ 2)
-                    end,
-                    Parameters
-                )
-            end
-            Gradients = only(Pullback(Loss))
-            
-            #=
-            Gradients = let Input_Array = Input_Array, Output_Array = Output_Array, Chain = Chain, State = State, Parameters = Parameters
-                Zygote.gradient((Parameters)->begin
-                        return sum((Chain(Input_Array, Parameters, State)[1] - Output_Array) .^ 2)
-            end, Parameters)[1] end
-            =#
 
-            Optimisers.update!(Optimizer, Parameters, Gradients)
-        #end()
-        if Index == 10
+        Input_Array = rand(Float32, (Input_Model_Array_Size_Tuple..., 1)) |> Device;
+        Output_Array = rand(Float32, (Input_Model_Array_Size_Tuple..., 1)) |> Device;
+
+        Loss, Pullback = let Input_Array = Input_Array, Output_Array = Output_Array, Chain = Chain, State = State, Parameters = Parameters
+            pullback(
+                (Parameters)->(sum((Chain(Input_Array, Parameters, State)[1] - Output_Array) .^ 2)),
+                Parameters
+            )
+        end
+        Gradients = only(Pullback(Loss))
+
+        update!(Optimizer, Parameters, Gradients)
+
+        if Index == Index_Stop
             break
         else
             Index += 1
@@ -118,27 +109,14 @@ function neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Par
 end
 function test()
     Input_Model_Array_Size_Tuple = (100, 100, 1)
-    #model_array_size_type = Tuple{Input_Model_Array_Size_Tuple...}
-    #Device = gpu_device()
-    Device = Lux.cpu_device()
-    #@time neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
-    #while true
-    Chain, Parameters, State, Optimizer = neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
-    #@time neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
-    #@code_warntype neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
-    #@code_native(debuginfo=:none, binary=true, neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple))
-    
-    @time neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
-    for _ in 1:2 @time neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer) end
 
-    #@code_warntype neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
-    #while true @time neuralnetwork_training(Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer) end
-    #end
-    
-    #@code_native(debuginfo=:none, binary=true, neuralnetwork_setup(Input_Model_Array_Size_Tuple))
-    #@code_native(debuginfo=:none, binary=true, neuralnetwork_setup(Input_Model_Array_Size_Tuple))
-    #@time neuralnetwork_setup(gpu_device(), Input_Model_Array_Size_Tuple)
-    #@allocated neuralnetwork_setup(gpu_device(), Input_Model_Array_Size_Tuple)
+    Device = gpu_device()
+
+    Chain, Parameters, State, Optimizer = neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
+
+    @time neuralnetwork_training(1, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
+    for _ in 1:5 @time neuralnetwork_training(100, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer) end
+
     return
 end
 test()

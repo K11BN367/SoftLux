@@ -18,9 +18,9 @@ function c__MaxPool(Value_Tuple::u__Argument...)
     Input_Tuple,                   Value_Tuple = unpack_arguments(a__Input(SoftLux.Infer), Value_Tuple...)
     Output_Tuple,                  Value_Tuple = unpack_arguments(a__Output(SoftLux.Infer), Value_Tuple...)
     Reduce_Structure,              Value_Tuple = unpack_arguments(a__Reduce_Structure(false), Value_Tuple...)
-    #println("MAXPOOL")
+
     Input_Tuple, Output_Tuple = c__MaxPool(a__Window(Window), a__Pad(Pad), a__Dilation(Dilation), a__Stride(Stride), a__Input(Input_Tuple), a__Output(Output_Tuple))
-    #println(Input_Tuple, " ", Output_Tuple)
+
     if Reduce_Structure == true
         return v__MaxPool_Parametric_Wrapper(Window, Pad, Dilation, Stride)
 
