@@ -864,19 +864,19 @@ uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 
 [[deps.SoftBase]]
 deps = ["FileIO", "HTTP", "Pkg", "TypeUtils"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftBase"
+path = "../SoftBase"
 uuid = "af0a1cfc-538f-4bb2-b0da-fbf558d56e16"
 version = "0.1.0"
 
 [[deps.SoftOptimisers]]
 deps = ["Optimisers", "SoftBase"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftOptimisers"
+path = "../SoftOptimisers"
 uuid = "768800b6-af41-427f-aca6-6c9b3ebc2520"
 version = "0.1.0"
 
 [[deps.SoftRandom]]
 deps = ["Random", "SoftBase"]
-path = "C:\\Users\\OsW-x\\Desktop\\Temp\\SoftRandom"
+path = "../SoftRandom"
 uuid = "b8c04a9d-53a0-48a9-ad30-96e9a8b69b86"
 version = "0.1.0"
 
