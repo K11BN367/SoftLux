@@ -75,11 +75,11 @@ function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
         a__Reduce_Structure(false),
     )
     
-    plso(show_layer(Chain))
+    #plso(show_layer(Chain))
     Chain = c__Chain(Chain.Layer_Tuple..., a__Reduce_Structure(true))
     =#
 
-    plso("neuralnetwork_definition")
+    #plso("neuralnetwork_definition")
     #=
     Kernel = a__Kernel(3, 3, Skip)
     Pad = a__Pad(1)
@@ -178,9 +178,9 @@ function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
     #Scale = 1 + rand()
 
     #Pad = a__Pad(v__Int64((Kernel - 1) / 2))
-    plso(Pad)
+    #plso(Pad)
     #Kernel = a__Kernel(Kernel, Kernel, Skip)
-    plso(Kernel)
+    #plso(Kernel)
     
     #Factor = 4
     Feature_Map = 6
@@ -193,7 +193,7 @@ function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
     function third_feature_map(Factor)::Int
         return second_feature_map(Factor) / 2
     end
-    plso("feature_map")
+    #plso("feature_map")
     Cat = c__Cat(
         c__Chain(
             c__MaxPool(a__Name(:Downsample_3), a__Window(2, 2, Skip), a__Stride(1, 1)),
@@ -232,7 +232,7 @@ function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
     )
     println(show_layer(Chain))
     Chain = c__Chain(Chain.Layer_Tuple..., a__Reduce_Structure(true))
-    plso(Chain)
+    #plso(Chain)
     Parameters, State = setup(SoftRandom.Default_Random, Chain) |> Device
 
     Optimizer = setup(c__Optimiser_Chain(c__Gradient_Accumulation(1), c__Descent(10^-9)), Parameters) |> Device
@@ -271,6 +271,7 @@ function test()
     Chain, Parameters, State, Optimizer = neuralnetwork_setup(Device, Input_Model_Array_Size_Tuple)
 
     @time neuralnetwork_training(1, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
+    #@code_warntype neuralnetwork_training(1, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer)
     for _ in 1:5 @time neuralnetwork_training(100, Device, Input_Model_Array_Size_Tuple, Chain, Parameters, State, Optimizer) end
 
     return
