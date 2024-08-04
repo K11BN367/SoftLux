@@ -43,6 +43,7 @@ module SoftLux
     import Lux
     import LuxCUDA
     import Zygote
+    import CUDA
 
 	import InteractiveUtils.@code_warntype
 	import InteractiveUtils.@code_native
