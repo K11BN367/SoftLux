@@ -12,6 +12,28 @@ module SoftLux
     import SoftBase.:(<)
     import SoftBase.:(>=)
     import SoftBase.:(<=)
+    
+    #=
+    import SoftBase
+    import SoftBase.@c__URI
+    import SoftBase.a__Path
+    import SoftBase.include!
+    import SoftBase.a
+    import SoftBase.v
+    import SoftBase.t
+    import SoftBase.u
+    import SoftBase.v__Type
+    import SoftBase.v__Value
+    import SoftBase.c__Symbol
+    import SoftBase.@__function
+    import SoftBase.c__Fragment
+    import SoftBase.c__Expression
+    import SoftBase.v__
+    import SoftBase.v__Tuple
+    import SoftBase.v__Symbol
+    import SoftBase.unpack_arguments
+    import SoftBase.pack_arguments
+    =#
     using SoftRandom
     using SoftOptimisers
 

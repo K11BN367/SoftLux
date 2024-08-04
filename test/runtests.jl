@@ -22,7 +22,8 @@ import Zygote
 const Skip = SoftLux.Skip
 const Infer = SoftLux.Infer
 function neuralnetwork_setup(Device, Model_Array_Size_Tuple)
-    Scale = 1 + rand()*0.2
+    #Scale = 1 + rand()*0.2
+    Scale = 1.5
     Kernel = a__Kernel(3, 3, Skip)
     Pad = a__Pad(1)
     Factor = 3
@@ -264,7 +265,7 @@ function neuralnetwork_training(Index_Stop, Device, Input_Model_Array_Size_Tuple
     end
 end
 function test()
-    Input_Model_Array_Size_Tuple = (100, 100, 1)
+    Input_Model_Array_Size_Tuple = (256, 256, 1)
 
     Device = gpu_device()
 

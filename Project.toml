@@ -5,6 +5,8 @@ version = "0.1.0"
 
 [deps]
 CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+ChainRules = "082447d4-558c-5d27-93f4-14fc19e9eca2"
+ChainRulesCore = "d360d2e6-b24c-11e9-a2a3-2a2ae2dbcce4"
 InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 Lux = "b2108857-7c20-44ae-9111-449ecde12c47"
 LuxCUDA = "d0bbae9a-e099-4d5b-a835-1c6931763bda"
